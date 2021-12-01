@@ -1,0 +1,75 @@
+const oneStep = 20
+
+func turnOrStep(dir float64) {
+	if heading == dir {
+		//say 50, 0.5
+		step oneStep
+	} else {
+		turnTo dir
+	}
+}
+
+onCloned => {
+	setXYpos mouseX, mouseY
+	show
+	for {
+		wait 0.04
+		step 10
+		if touching(Edge) {
+			destroy
+		}
+	}
+}
+
+onStart => {
+	say "Hello Qin"
+	//for {
+	//	turnTo Mouse
+	//}
+	for {
+		wait 1
+		clone
+	}
+}
+
+onKey KeyUp, => {
+	//turnTo Up
+	turnOrStep(0)
+}
+
+onKey KeyRight, => {
+	//turnTo Right
+	turnOrStep(90)
+}
+
+onKey KeyDown, => {
+	//turnTo Down
+	turnOrStep(180)
+}
+
+onKey KeyLeft, => {
+	//turnTo Left
+	turnOrStep(-90)
+}
+
+onKey KeyA, => {
+	turn Left
+}
+
+onKey KeyD, => {
+	turn Right
+}
+
+onKey KeyW, => {
+	turn -45
+}
+
+onKey KeyS, => {
+	turn 45
+}
+
+
+
+onClick => {
+	say "press the arrorw keys", 1
+}
